@@ -15,7 +15,16 @@ terraform {
 
 # Provider Block
 provider "azurerm" {
+skip_provider_registration = true
  features {}          
 }
 
+terraform {
+  cloud {
+    organization = "Cherry-Enterprise-Cloud"
 
+    workspaces {
+      name = "azure_playground"
+    }
+  }
+}
