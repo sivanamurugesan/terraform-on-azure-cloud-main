@@ -17,9 +17,19 @@ terraform {
   }
 }
 
-# Provider Block
-provider "azurerm" {
- features {}          
+terraform {
+  cloud {
+    organization = "Cherry-Enterprise-Cloud"
+
+    workspaces {
+      name = "azure_cloud_use_cases"
+    }
+  }
 }
 
+# Provider Block
 
+provider "azurerm" {
+skip_provider_registration = "true"
+features {}
+}
